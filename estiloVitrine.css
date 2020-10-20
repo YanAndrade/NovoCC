@@ -1,0 +1,137 @@
+/***********************
+*       ROLAGEM        *
+***********************/
+body{ /*tratamento da rolagem do site*/
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/***********************
+*       1ª FUNDO       *
+***********************/
+
+
+
+/***********************
+*                      *
+***********************/
+#imghome{
+    padding-top: 15%;
+    padding-bottom: 2%;
+}
+
+.hero-text{ /*Frase de efeito*/
+    color: white;
+    margin-bottom: 25px;
+}
+
+.btn{ /*tratamento do botão*/
+    padding: 5px 20px;
+    margin-right: 10px; 
+    margin-left: 10px;
+}
+
+.header-buttons a{ /*letras dentro do botão*/
+    color: white;
+    transition: all 0.5s ease-in;
+}
+
+.header-buttons a.btn-full:hover{ /*tratamento de dentro do botão full*/
+    background-color: #ffdd15;
+    color: black;
+}
+
+.header-buttons a.btn-half:hover{ /*tratamento de dentro do botão half*/
+    background-color: #ffdd15;
+    color: black;
+}
+
+
+/***********************
+*       NAVBAR        *
+***********************/
+.navbar{
+    background-color: black;
+}
+
+a {
+    color:white;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.nav-item{
+    text-align: center; /*Posição*/
+    padding: 2px;
+}
+.nav-link{
+    font-size: 20px; /*Tamanho dos itens*/
+    transition: 1s all ease;
+}
+
+.nav-link:hover{
+    color: #ffdd15;
+}
+
+
+
+/***********************
+*       ATLETAS       *
+***********************/
+
+.testimonials{
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url();
+    height: 102vh;
+    background-position: center;
+    background-size: cover;
+}
+
+.atletas{
+    color: white;
+    margin-top: -4%;
+}
+
+#card-atleta{
+    text-align: center;
+    width: 65%;
+    height: 95%;
+}
+
+.card-title{
+    text-align: center;
+}
+
+
+/***********************
+*       Modal       *
+***********************/
+
+#bot1{
+    text-align: center;
+}
+
+#exampleFormControlFile1{
+    margin-left: 10%;
+}
+
+#exampleFormControlSelect1{
+    margin-left: 25%;
+    text-align: center;
+    width: 50%;
+    height: 25%;
+}
+
+#inputNome{
+    width: 300px;
+    margin-left: 15%;
+}
+
+.col-form-label {
+    height: 10px;
+    margin-left: 30px;
+  }
+
+.col-sm-10{
+    margin-left: 50px;
+}
+

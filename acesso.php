@@ -1,3 +1,7 @@
+<?php
+  require __DIR__ . "/Controller/Session.php";
+?>
+
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -14,16 +18,53 @@
     <title>Acesso</title>
   </head>
   <body>
-    
-    <div class="login">
-        <img src="img/user.png" class="usuario" width="100" height="100" alt="">
 
-        <form>
+<!----------------------------------------Navbar------------------------------------------>
 
-            <h2>Acessou</h2>
-
-        </form>
+<header class="header">  
+  <nav class="navbar navbar-default fixed-top">
+    <div class="container">
+      <a class="navbar-brand" id="icon" href="acesso.php">
+        Clothing Control
+      </a>
+      <button type="button" class="btn btn-light" >
+        <a class="navbar-brand" id="icon" href="logout.php">
+          Sair
+        </a>
+      </button>
     </div>
+  </nav>
+
+<!---------------------------------------------Atletas---+------------------------------------------------->
+<section class="testimonials"> 
+            <div class="conatiner">
+                <div class="wrap">
+                    
+                    <div class="box one">
+                        <div class="date">
+                        </div>
+                        <h1>VITRINE</h1>
+                        <button class="btn1">
+                          <a href="vitrine.php" id="ic">Acessar</a>
+                        </button>
+                </div>
+                    
+                <div class="box two">
+                    <div class="date">
+                    </div>
+                    <H1>ESTOQUE</H1>
+                    <button class="btn1">
+                      <a href="#" id="ic">Acessar</a>
+                    </button>
+                </div>
+            </div>
+    </section>
+
+    <h2>
+      <?=
+        $_SESSION['nome'];
+      ?>
+      </h2>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

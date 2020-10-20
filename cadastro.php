@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if (isset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email'])) {
+    header('LOCATION: acesso.php');
+  }
 $nmNome = $_POST['nmNome'] ?? null;
 $nmEmail = $_POST['nmEmail'] ?? null;
 $nmSenha = $_POST['nmSenha'] ?? null;
@@ -24,7 +27,7 @@ if (!is_null($nmNome)) {
                     throw new exception('A senha precisa ter no mínimo 6 caracteres.');
                 }
     header('LOCATION: index.php');
-    }catch(Exception $e){}
+    }catch(Exception $e){throw new Exception($e);}
 }
 ?>
 
