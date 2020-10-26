@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email'])) {
+if (isset($_SESSION['id'], $_SESSION['nome']/*, $_SESSION['email']*/)) {
   header('LOCATION: acesso.php');
 }
 $nmNome = $_POST['nmNome'] ?? null;
@@ -20,9 +20,9 @@ if (!is_null($nmNome)) {
       $dado = mysqli_fetch_assoc($dados_usuario);
 
       session_start();
-      $_SESSION['id'] = $dado['id_usuario'];
-      $_SESSION['nome'] = $dado['nm_usuario'];
-      $_SESSION['email'] = $dado['nm_email'];
+      $_SESSION['id'] = $select['id_usuario'];
+      $_SESSION['nome'] = $select['nm_usuario'];
+      //$_SESSION['email'] = $select['nm_email'];
       header('LOCATION: acesso.php');
     } else {
       throw new exception('Falha ao efetuar login');
