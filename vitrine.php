@@ -81,15 +81,19 @@ $produtos = $query->buscarProdutos($_SESSION['id']);
 
     <!----------------------------------------Navbar------------------------------------------>
 
-    <header class="header">
-        <nav class="navbar navbar-default fixed-top">
-            <div class="container">
-                <a class="navbar-brand" id="icon" href="acesso.php">
-                    Clothing Control
-                </a>
-                <button type="button" class="btn btn-light">Sair</button>
-            </div>
-        </nav>
+    <header class="header">  
+  <nav class="navbar navbar-default fixed-top">
+    <div class="container">
+      <a class="navbar-brand" id="icon" href="acesso.php">
+        Clothing Control
+      </a>
+      <button type="button" class="btn btn-light" >
+        <a class="navbar-brand" id="sair" href="logout.php">
+          Sair
+        </a>
+      </button>
+    </div>
+  </nav>
 
 
         <!---------------------------------------Botão Adicionar------------------------------------------------------>
@@ -99,16 +103,16 @@ $produtos = $query->buscarProdutos($_SESSION['id']);
         <br>
         <!---------------------------------------Card------------------------------------------------------------>
 
-        <form method="POST">
-            <input type="text" name="nmProduto" placeholder="Nome do produto">
-            <input type="text" name="tecido" placeholder="Tecido">
-            <input type="text" name="origem" placeholder="Origem">
-            <input type="text" name="descProduto" placeholder="Descrição">
-            <input type="submit" name="op" value="Enviar">
+        <form method="POST" id="fm">
+            <input type="text" name="nmProduto" id="add" placeholder="Nome do produto">
+            <input type="text" name="tecido" id="add" placeholder="Tecido">
+            <input type="text" name="origem" id="add" placeholder="Origem">
+            <input type="text" name="descProduto" id="add" placeholder="Descrição">
+            <input type="submit" name="op" id="enviar" value="Enviar">
         </form>
 
         <hr>
-        
+
         <div class="container-fluid">
             <div class="row">
                 <?php
@@ -116,7 +120,21 @@ $produtos = $query->buscarProdutos($_SESSION['id']);
 
                     <div class="col-sm">
                         <div class="card mx-auto" id="card-atleta">
-                            <img class="card-img-top" src="img/roupa1.jpg" alt="Imagem de capa do card">
+                            <!-- original -->
+                            <!-- <img class="card-img-top" src="img/roupa1.jpg" alt="Imagem de capa do card"> -->
+
+                            <!--  alterado -->
+                            <?php if ($produto['caminho_foto_produto'] != null) { ?>
+                                <button type="button" data-toggle="modal" data-target="#UploadImageModal<?= $produto['id_produto'] ?>"><img src="../imagesVitrine/<?= $produto['caminho_foto_produto'] ?>" style=" height:170px;
+    width:auto;/*maintain aspect ratio*/
+    max-width:180px;"></button>
+                            <?php } else { ?>
+                                <!-- TODO style mockado para manter padrão de tamanho da imagem, passar para CSS -->
+                                <button type="button" data-toggle="modal" data-target="#UploadImageModal<?= $produto['id_produto'] ?>"><img src="/img/roupa1.jpg" style=" height:170px;
+    width:auto;/*maintain aspect ratio*/
+    max-width:180px;"></button>
+                            <?php } ?>
+
                             <div class="card-body">
                                 <h5 class="card-title"><?= $produto['nome_produto'] ?></h5>
                                 <!-- Botão para acionar modal -->
@@ -185,6 +203,35 @@ $produtos = $query->buscarProdutos($_SESSION['id']);
                             </div>
                         </div>
                     </div>
+
+                    <!-- Upload Image Modal Start -->
+                    <div class="modal fade" id="UploadImageModal<?= $produto['id_produto'] ?>" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="TituloModalCentralizado">Mudar foto</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="../../Controller/imageUpload.php" method="post" enctype="multipart/form-data">
+                                        Selecione uma imagem de perfil:
+                                        <input type="file" name="fileToUpload" id="fileToUpload">
+                                        <input type="hidden" value="<?= $produto['id_produto'] ?>" name="idProduto">
+                                        <input type="submit" value="Salvar imagem" name="submit">
+
+                                        <!-- Exibe o botao de remover imagem caso o usuario ja tenha uma imagem -->
+                                        <?php if ($produto['caminho_foto_produto'] != null) { ?>
+                                            <input type="submit" value="Remover imagem" name="remove">
+                                        <?php } ?>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Upload Image Modal End -->
 
                 <?php } ?>
             </div>

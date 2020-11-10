@@ -28,7 +28,7 @@
         Clothing Control
       </a>
       <button type="button" class="btn btn-light" >
-        <a class="navbar-brand" id="icon" href="logout.php">
+        <a class="navbar-brand" id="sair" href="logout.php">
           Sair
         </a>
       </button>
@@ -37,6 +37,11 @@
 
 <!---------------------------------------------Atletas---+------------------------------------------------->
 <section class="testimonials"> 
+
+      <div>
+      <p id="bem">Bem vindo <br> <?= $_SESSION['nome']; ?> </p>
+      </div>
+
             <div class="conatiner">
                 <div class="wrap">
                     
@@ -54,17 +59,11 @@
                     </div>
                     <H1>ESTOQUE</H1>
                     <button class="btn1">
-                      <a href="#" id="ic">Acessar</a>
+                      <a href="estoque.php" id="ic">Acessar</a>
                     </button>
                 </div>
             </div>
     </section>
-
-    <h2>
-      <?=
-        $_SESSION['nome'];
-      ?>
-      </h2>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

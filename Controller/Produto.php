@@ -109,11 +109,9 @@ class Produto extends Connection
         $connection = new connection();
         $con = $connection->OpenCon();
         // Deleta todos os jogadores e rankings dessa conta
-
         // Deleta a conta
         $sql = "UPDATE Produto set caminho_foto_produto = '$caminhoFoto' where id_produto = $idProduto";
         mysqli_query($con, $sql);
-        var_dump($idProduto, $caminhoFoto, $sql);
         $connection->CloseCon($con);
     }
 
